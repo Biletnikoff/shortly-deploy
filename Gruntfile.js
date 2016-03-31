@@ -2,7 +2,14 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    concat: {
+    concat: { 
+      options: {
+        seperator: ';'
+      },
+      dist: {
+        src: ['app/**/*.js', 'lib/**.js'],
+        dest: 'dist/%=pkg.name %>.js'
+      }
     },
 
     mochaTest: {
@@ -25,6 +32,12 @@ module.exports = function(grunt) {
 
     eslint: {
       target: [
+        'Gruntfile.js',
+        'app/**/*.js',
+        'lib/**.js',
+        'server.js',
+        'server-config.js'
+
         // Add list of files to lint here
       ]
     },
